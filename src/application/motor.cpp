@@ -1,11 +1,11 @@
-#include <motor.h>
+#include <application.h>
 
 Motor::Motor(int pin) 
 {
     this->pin = pin;
 }
 
-void Motor::setValue(int8_t value) {
+void Motor::setValue(int value) {
     if (this->value != value) {
         this->value = value;
         this->actuate();
@@ -15,7 +15,6 @@ void Motor::setValue(int8_t value) {
 /*
 * DC Motor
 */
-
 void DCMotor::actuate()
 {
     // PWM control! PARSE VALUE AS SPEED FORWARD/BACKWARD
@@ -23,15 +22,14 @@ void DCMotor::actuate()
     Serial.println(this->value);
 }
 
-
 /*
 * Servo Motor
 */
-
 ServoMotor::ServoMotor(int pin) : Motor(pin) {
     this->servo = new Servo();
     this->servo->attach(this->pin);
 }
+
 void ServoMotor::actuate() 
 {
     // NEED TO PARSE VALUE AS ANGLE!

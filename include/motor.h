@@ -1,9 +1,6 @@
 #ifndef MOTOR_H_
 #define MOTOR_H_
 
-#include <Arduino.h>
-#include <ESP32Servo.h>
-
 enum motorType {
     DC,
     SERVO
@@ -16,7 +13,7 @@ class Motor {
 
     public:
         Motor(int pin);
-        void setValue(int8_t value);
+        void setValue(int value);
         virtual void actuate() {};
 };
 

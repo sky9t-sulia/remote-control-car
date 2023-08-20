@@ -1,13 +1,18 @@
-#include <car.h>
+#include <application.h>
 
-Car::Car(int motorPin, int steerPin) 
+Vehicle::Vehicle(int motorPin, int steerPin) 
 {
     this->motors[motorType::DC] = new DCMotor(motorPin);
     this->motors[motorType::SERVO] = new ServoMotor(steerPin);
 }
 
-void Car::move(int8_t speed, int8_t steer) 
+void Vehicle::move(int speed, int steer) 
 {
     this->motors[motorType::DC]->setValue(speed);
     this->motors[motorType::SERVO]->setValue(steer);
+}
+
+void Vehicle::stop()
+{
+    this->move(0, 0);
 }

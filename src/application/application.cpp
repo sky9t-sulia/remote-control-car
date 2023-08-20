@@ -1,33 +1,32 @@
-#include <Arduino.h>
-#include <app.h>
+#include <application.h>
 
 /*
  * Application
  */
-App::App(int motorPin, int servoPin) {
+Application::Application(int motorPin, int servoPin) {
     // Initialize
-    this->car = new Car(motorPin, servoPin);
+    this->vehicle = new Vehicle(motorPin, servoPin);
     this->remote = new Remote();
     this->controls = new Controls();
 }
 
-void App::update()
+void Application::loop()
 {
-    // loop method
     if (!this->remote->check())
     {
-        this->controls->stop();
+        // stop the car
+        this->vehicle->stop();
         this->remote->connect();
         return;
     }
 
-    this->car->move(
+    this->vehicle->move(
         this->controls->getSpeed(),
         this->controls->getSteer()
     );
 }
 
-Controls *App::getControls()
+Controls *Application::getControls()
 {
     return this->controls;
 }

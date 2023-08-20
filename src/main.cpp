@@ -1,16 +1,16 @@
 #include <Arduino.h>
-#include <app.h>
+#include <application.h>
 
 #define MOTOR_PIN 12
 #define SERVO_PIN 13
 
 // Init.
-App application(MOTOR_PIN, SERVO_PIN);
+Application *app = new Application(MOTOR_PIN, SERVO_PIN);
 
 // Remote update callback.
 void Remote::onRemoteUpdate()
 {
-    application.getControls()->update();
+    app->getControls()->update();
 }
 
 // Arduino methods
@@ -21,5 +21,5 @@ void setup()
 
 void loop()
 {
-    application.update();
+    app->loop();
 }
