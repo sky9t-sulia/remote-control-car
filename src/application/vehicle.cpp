@@ -1,18 +1,38 @@
 #include <application.h>
 
-Vehicle::Vehicle(int motorPin, int steerPin) 
+Vehicle::Vehicle(int motorPin, int servoPin)
 {
-    this->motors[motorType::DC] = new DCMotor(motorPin);
-    this->motors[motorType::SERVO] = new ServoMotor(steerPin);
+    this->motors[MotorType::DC] = new TypeDc(motorPin);
+    this->motors[MotorType::SERVO] = new TypeServo(servoPin);
 }
 
-void Vehicle::move(int speed, int steer) 
+void Vehicle::disable()
 {
-    this->motors[motorType::DC]->setValue(speed);
-    this->motors[motorType::SERVO]->setValue(steer);
+    this->setTurnValue(0);
+    this->setSpeedValue(0);
+    this->disabled = true;
 }
 
-void Vehicle::stop()
+bool Vehicle::isDisabled()
 {
-    this->move(0, 0);
+    return this->disabled;
+}
+
+void Vehicle::repair()
+{
+    this->disabled = false;
+}
+
+void Vehicle::setSpeedValue(int value)
+{
+    if (this->disabled)
+        return;
+    this->motors[MotorType::DC]->setValue(value);
+}
+
+void Vehicle::setTurnValue(int value)
+{
+    if (this->disabled)
+        return;
+    this->motors[MotorType::SERVO]->setValue(value);
 }

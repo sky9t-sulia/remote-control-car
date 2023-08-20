@@ -1,9 +1,9 @@
 #include <application.h>
 
-Application::Application(int motorPin, int servoPin) {
-    this->vehicle = new Vehicle(motorPin, servoPin);
+Application::Application(int motorPin, int servoPin)
+{
     this->remote = new Remote();
-    this->controls = new Controls();
+    this->vehicle = new Vehicle(motorPin, servoPin);
 }
 
 void Application::loop()
@@ -11,18 +11,19 @@ void Application::loop()
     if (!this->remote->check())
     {
         // stop the car
-        this->vehicle->stop();
+        this->vehicle->disable();
         this->remote->connect();
         return;
     }
 
-    this->vehicle->move(
-        this->controls->getSpeed(),
-        this->controls->getSteer()
-    );
+    // After successfull connection vehicle can move.
+    if (this->vehicle->isDisabled())
+    {
+        this->vehicle->repair();
+    }
 }
 
-Controls *Application::getControls()
+Vehicle *Application::getVehicle()
 {
-    return this->controls;
+    return this->vehicle;
 }

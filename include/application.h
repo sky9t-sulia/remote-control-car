@@ -6,17 +6,17 @@
 #include <ESP32Servo.h>
 
 #include "vehicle.h"
-#include "controls.h"
 #include "remote.h"
 
-class Application {
+class Application
+{
     Remote *remote;
     Vehicle *vehicle;
-    Controls *controls;
-    public:
-        Application(int motorPin, int servoPin);
-        void loop();
-        Controls *getControls();
+
+public:
+    Application(int motorPin, int servoPin);
+    void loop();
+    Vehicle *getVehicle();
 };
 
 #endif

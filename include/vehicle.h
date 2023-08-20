@@ -1,15 +1,23 @@
 #ifndef VEHICLE_H_
 #define VEHICLE_H_
 
-#include "motor.h"
+#include "motors/type-dc.h"
+#include "motors/type-servo.h"
 
-class Vehicle {
+class Vehicle
+{
     Motor *motors[2];
+    int turnValue;
+    int speedValue;
+    bool disabled;
 
-    public:
-        Vehicle(int motorPin, int steerPin);
-        void move(int speed, int steer);
-        void stop();
+public:
+    Vehicle(int motorPin, int servoPin);
+    void disable();
+    void repair();
+    bool isDisabled();
+    void setSpeedValue(int value);
+    void setTurnValue(int value);
 };
 
 #endif

@@ -10,7 +10,8 @@ Application *app = new Application(MOTOR_PIN, SERVO_PIN);
 // Remote update callback.
 void Remote::onRemoteUpdate()
 {
-    app->getControls()->update();
+    app->getVehicle()->setSpeedValue(Ps3.data.analog.stick.ly);
+    app->getVehicle()->setTurnValue(Ps3.data.analog.stick.rx);
 }
 
 // Arduino methods
