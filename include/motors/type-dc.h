@@ -7,6 +7,7 @@ class TypeDc : public Motor
 {
 protected:
     void actuate();
+    uint8_t getSpeed();
 
 public:
     using Motor::Motor;

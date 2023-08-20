@@ -11,8 +11,6 @@ class Vehicle
 {
     Motor *motors[2];
     bool disabled;
-    int8_t turnValue;
-    int8_t speedValue;
 
 public:
     Vehicle(uint8_t motorPin, uint8_t servoPin);

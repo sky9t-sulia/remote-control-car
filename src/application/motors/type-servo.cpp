@@ -6,10 +6,21 @@ TypeServo::TypeServo(uint8_t pin) : Motor(pin)
     this->servo->attach(this->pin);
 }
 
+uint8_t TypeServo::getAngle()
+{
+    if (this->value > 0)
+    {
+        // --> turn right
+        return this->value;
+    }
+
+    // <-- turn left
+    return this->value;
+}
+
 void TypeServo::actuate()
 {
-    // NEED TO PARSE VALUE AS ANGLE!
-    this->servo->write(this->value);
+    this->servo->write(this->getAngle());
     Serial.print("Steering...\t");
     Serial.println(this->value);
 }
