@@ -8,7 +8,6 @@ void setup()
 {
     Serial.begin(115200);
     vehicleInit(MOTOR_PIN, SERVO_PIN);
-    connectToRemote();
 }
 
 void loop()
