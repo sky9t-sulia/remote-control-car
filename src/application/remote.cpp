@@ -1,7 +1,5 @@
 #include <application.h>
 
-Remote::Remote() {}
-
 bool Remote::check() {
     if (!Ps3.isConnected()) {
         return false;

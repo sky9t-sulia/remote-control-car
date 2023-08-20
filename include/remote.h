@@ -3,7 +3,6 @@
 
 class Remote {
     public:
-        Remote();
         bool check();
         void connect();
         static void onRemoteUpdate();

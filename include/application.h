@@ -1,5 +1,5 @@
-#ifndef BLUE_CAR_H_
-#define BLUE_CAR_H_
+#ifndef APPLICATION_H_
+#define APPLICATION_H_
 
 #include <Arduino.h>
 #include <Ps3Controller.h>

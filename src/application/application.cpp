@@ -1,10 +1,6 @@
 #include <application.h>
 
-/*
- * Application
- */
 Application::Application(int motorPin, int servoPin) {
-    // Initialize
     this->vehicle = new Vehicle(motorPin, servoPin);
     this->remote = new Remote();
     this->controls = new Controls();
