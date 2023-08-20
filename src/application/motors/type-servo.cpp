@@ -1,6 +1,6 @@
-#include "application.h"
+#include <vehicle.h>
 
-TypeServo::TypeServo(int pin) : Motor(pin)
+TypeServo::TypeServo(uint8_t pin) : Motor(pin)
 {
     this->servo = new Servo();
     this->servo->attach(this->pin);

@@ -1,11 +1,11 @@
-#include <application.h>
+#include <vehicle.h>
 
-Motor::Motor(int pin)
+Motor::Motor(uint8_t pin)
 {
     this->pin = pin;
 }
 
-void Motor::setValue(int value)
+void Motor::setValue(int8_t value)
 {
     if (this->value != value)
     {

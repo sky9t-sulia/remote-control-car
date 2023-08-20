@@ -1,4 +1,4 @@
-#include "application.h"
+#include <vehicle.h>
 
 void TypeDc::actuate()
 {

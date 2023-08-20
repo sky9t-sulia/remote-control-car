@@ -10,13 +10,13 @@ enum MotorType
 class Motor
 {
 protected:
-    int pin;
+    uint8_t pin;
     int8_t value;
     virtual void actuate(){};
 
 public:
-    Motor(int pin);
-    void setValue(int value);
+    Motor(uint8_t pin);
+    void setValue(int8_t value);
 };
 
 #endif

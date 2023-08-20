@@ -10,7 +10,7 @@ protected:
 
 public:
     Servo *servo;
-    TypeServo(int pin);
+    TypeServo(uint8_t pin);
 };
 
 #endif

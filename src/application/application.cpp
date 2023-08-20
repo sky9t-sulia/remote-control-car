@@ -1,29 +1,38 @@
 #include <application.h>
 
-Application::Application(int motorPin, int servoPin)
+Vehicle *vehicle;
+
+void vehicleInit(uint8_t motorPin, uint8_t servoPin)
 {
-    this->remote = new Remote();
-    this->vehicle = new Vehicle(motorPin, servoPin);
+    vehicle = new Vehicle(motorPin, servoPin);
+    connectToRemote();
 }
 
-void Application::loop()
+void onUpdate()
 {
-    if (!this->remote->check())
-    {
-        // stop the car
-        this->vehicle->disable();
-        this->remote->connect();
-        return;
-    }
+    vehicle->setSpeed(Ps3.data.analog.stick.ly);
+    vehicle->setTurn(Ps3.data.analog.stick.rx);
+}
 
-    // After successfull connection vehicle can move.
-    if (this->vehicle->isDisabled())
+void onConnect()
+{
+    if (vehicle->isDisabled())
     {
-        this->vehicle->repair();
+        vehicle->repair();
     }
 }
 
-Vehicle *Application::getVehicle()
+void onDisconnect()
 {
-    return this->vehicle;
+    vehicle->disable();
+    connectToRemote();
+}
+
+void connectToRemote()
+{
+    Ps3.end();
+    Ps3.begin();
+    Ps3.attach(onUpdate);
+    Ps3.attachOnConnect(onConnect);
+    Ps3.attachOnDisconnect(onDisconnect);
 }

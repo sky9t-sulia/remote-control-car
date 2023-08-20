@@ -1,15 +1,20 @@
-#include <application.h>
+#include "vehicle.h"
 
-Vehicle::Vehicle(int motorPin, int servoPin)
+Vehicle::Vehicle(uint8_t motorPin, uint8_t servoPin)
 {
     this->motors[MotorType::DC] = new TypeDc(motorPin);
     this->motors[MotorType::SERVO] = new TypeServo(servoPin);
 }
 
+void Vehicle::repair()
+{
+    this->disabled = false;
+}
+
 void Vehicle::disable()
 {
-    this->setTurnValue(0);
-    this->setSpeedValue(0);
+    this->setTurn(0);
+    this->setSpeed(0);
     this->disabled = true;
 }
 
@@ -18,19 +23,14 @@ bool Vehicle::isDisabled()
     return this->disabled;
 }
 
-void Vehicle::repair()
-{
-    this->disabled = false;
-}
-
-void Vehicle::setSpeedValue(int value)
+void Vehicle::setSpeed(int8_t value)
 {
     if (this->disabled)
         return;
     this->motors[MotorType::DC]->setValue(value);
 }
 
-void Vehicle::setTurnValue(int value)
+void Vehicle::setTurn(int8_t value)
 {
     if (this->disabled)
         return;
