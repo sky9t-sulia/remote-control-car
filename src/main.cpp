@@ -1,17 +1,19 @@
 #include <Arduino.h>
+#include <app.h>
 
-#include <include/remote.h>
-#include <include/controls.h>
-#include <include/car.h>
+#define MOTOR_PIN 12
+#define SERVO_PIN 13
 
-Remote remote;
-Controls controls;
-Car car(12, 13);  // motor pin, servo pin
+// Init.
+App application(MOTOR_PIN, SERVO_PIN);
 
-void Remote::onRemoteUpdate() {
-    controls.update();
+// Remote update callback.
+void Remote::onRemoteUpdate()
+{
+    application.getControls()->update();
 }
 
+// Arduino methods
 void setup()
 {
     Serial.begin(115200);
@@ -19,12 +21,5 @@ void setup()
 
 void loop()
 {
-    if (!remote.check()) {
-        controls.stop();
-        remote.connect();
-        // no actions needed
-        return;
-    }
-
-    car.move(controls.getSpeed(), controls.getSteer());
+    application.update();
 }
