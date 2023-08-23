@@ -1,9 +1,13 @@
 #include <vehicle.h>
 
-TypeServo::TypeServo(uint8_t pin) : Motor(pin)
+TypeServo::TypeServo(int8_t servoPin) : Motor()
 {
+    ESP32PWM::timerCount[0] = 4;
     this->servo = new Servo();
-    this->servo->attach(this->pin);
+    this->servo->setPeriodHertz(50);
+    this->servo->attach(servoPin, 1000, 2000);
+
+    this->initialized = true;
 }
 
 uint8_t TypeServo::getAngle()
@@ -11,16 +15,19 @@ uint8_t TypeServo::getAngle()
     if (this->value > 0)
     {
         // --> turn right
-        return this->value;
+        return map(this->value, 0, 127, ANGLE_CENTER, ANGLE_MIN);
     }
 
     // <-- turn left
-    return this->value;
+    return map(abs(this->value), 0, 127, ANGLE_CENTER, ANGLE_MAX);
 }
 
 void TypeServo::actuate()
 {
+    if (!this->initialized)
+    {
+        return;
+    }
+    Serial.println("Steering!");
     this->servo->write(this->getAngle());
-    Serial.print("Steering...\t");
-    Serial.println(this->value);
 }

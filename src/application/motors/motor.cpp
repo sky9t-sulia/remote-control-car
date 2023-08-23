@@ -1,9 +1,6 @@
 #include <vehicle.h>
 
-Motor::Motor(uint8_t pin)
-{
-    this->pin = pin;
-}
+Motor::Motor() {}
 
 void Motor::setValue(int8_t value)
 {

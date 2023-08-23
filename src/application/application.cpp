@@ -2,9 +2,9 @@
 
 Vehicle *vehicle;
 
-void vehicleInit(uint8_t motorPin, uint8_t servoPin)
+void vehicleInit()
 {
-    vehicle = new Vehicle(motorPin, servoPin);
+    vehicle = new Vehicle();
     connectToRemote();
 }
 
@@ -30,7 +30,6 @@ void onDisconnect()
 
 void connectToRemote()
 {
-    Ps3.end();
     Ps3.begin();
     Ps3.attach(onUpdate);
     Ps3.attachOnConnect(onConnect);

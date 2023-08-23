@@ -3,10 +3,15 @@
 
 #include "vehicle.h"
 
+#define PIN_MOTOR_D0 32
+#define PIN_MOTOR_D1 33
+
+#define PIN_SERVO 18
+
 void onUpdate();
 void onConnect();
 void onDisconnect();
 void connectToRemote();
-void vehicleInit(uint8_t motorPin, uint8_t servoPin);
+void vehicleInit();
 
 #endif

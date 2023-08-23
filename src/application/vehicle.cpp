@@ -1,9 +1,10 @@
 #include "vehicle.h"
+#include "application.h"
 
-Vehicle::Vehicle(uint8_t motorPin, uint8_t servoPin)
+Vehicle::Vehicle()
 {
-    this->motors[MotorType::DC] = new TypeDc(motorPin);
-    this->motors[MotorType::SERVO] = new TypeServo(servoPin);
+    this->motors[MotorType::DC] = new TypeDc(PIN_MOTOR_D0, PIN_MOTOR_D1);
+    this->motors[MotorType::SERVO] = new TypeServo(PIN_SERVO);
 }
 
 void Vehicle::repair()
@@ -14,7 +15,7 @@ void Vehicle::repair()
 void Vehicle::disable()
 {
     this->setTurn(0);
-    this->setSpeed(0);
+    this->getDcMotor()->stop();
     this->disabled = true;
 }
 
@@ -35,4 +36,9 @@ void Vehicle::setTurn(int8_t value)
     if (this->disabled)
         return;
     this->motors[MotorType::SERVO]->setValue(value);
+}
+
+TypeDc *Vehicle::getDcMotor()
+{
+    return static_cast<TypeDc *>(this->motors[MotorType::DC]);
 }
