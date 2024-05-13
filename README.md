@@ -7,7 +7,7 @@ Requirements:
 - Any [ESP32](https://www.aliexpress.com/item/1005005246146177.html) board with bluetooth support.
 - 1 Positional rotation Servo. I used [SG92R](https://www.aliexpress.com/item/4000844077554.html).
 - 1 DC motor. I used [N60 (3V-6V)](https://www.aliexpress.com/item/32472051974.html) 12x30mm with 5mm shaft.
-- 1 Motor driver. I used [DC Motor Drive Module](https://www.aliexpress.com/item/1005002886003476.html)
+- 1 Motor driver. I used [DC Motor Drive Module](https://www.aliexpress.com/item/1005002886003476.html) it's good because also have 3.3v output to power ESP32 board.
 
 Additionally:
 - Chassis for the car or 3d printed model.
