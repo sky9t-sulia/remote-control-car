@@ -13,6 +13,19 @@ Additionally:
 - Chassis for the car or 3d printed model.
 - Li-Po battery 2s 7.4v
 
+## Wiring
+The wiring is pretty simple.
+
+PIN 32 to D0 of DCMotor module
+PIN 33 to D1 of DCMotor module
+PIN 18 to Servo signal pin
+
+use 3.3V output in DCMotor for powering esp32 board.
+use GND for provide ground to esp32 and servo
+use "Motor 1" connector to connect DC motor to DCMotor module.
+
+After that connect battery to DC Motor Drive module IN connector.
+
 Photos:
 ![car](https://github.com/sky9t-sulia/remote-control-car/blob/main/images/1.jpg?raw=true)
 ![car esp32 placement](https://github.com/sky9t-sulia/remote-control-car/blob/main/images/2.jpg?raw=true)
