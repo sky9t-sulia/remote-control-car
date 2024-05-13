@@ -26,7 +26,7 @@ use "Motor 1" connector to connect DC motor to DCMotor module.
 
 After that connect battery to DC Motor Drive module IN connector.
 
-Photos:
+## Photos:
 ![car](https://github.com/sky9t-sulia/remote-control-car/blob/main/images/1.jpg?raw=true)
 ![car esp32 placement](https://github.com/sky9t-sulia/remote-control-car/blob/main/images/2.jpg?raw=true)
 ![car motor placement, motor driver](https://github.com/sky9t-sulia/remote-control-car/blob/main/images/3.jpg?raw=true)
