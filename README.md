@@ -18,11 +18,11 @@ The wiring is pretty simple.
 
 PIN 32 to D0 of DCMotor module\
 PIN 33 to D1 of DCMotor module\
-PIN 18 to Servo signal pin\
+PIN 18 to Servo signal pin
 
 use 3.3V output in DCMotor for powering esp32 board.\
 use GND for provide ground to esp32 and servo.\
-use "Motor 1" connector to connect DC motor to DCMotor module.\
+use "Motor 1" connector to connect DC motor to DCMotor module.
 
 After that connect battery to DC Motor Drive module IN connector.
 
